@@ -16,6 +16,8 @@ This project is useful for hostel entry/exit monitoring, reducing manual attenda
 - Marks attendance after successful OTP verification.
 - Tracks arrival time, departure time, and late entries.
 - Provides an admin-protected dashboard to view daily attendance, late comers, and weekly late reports.
+- Redirects unauthorized dashboard users to an admin login page.
+- Supports admin login and logout using credentials stored in MySQL.
 
 ## Tech Stack
 
@@ -40,7 +42,8 @@ Facial_Recognition_Hostel_Attendance_System/
 │   ├── models.py
 │   ├── schema.sql
 │   ├── add_student_template.sql
-│   └── add_attendance_template.sql
+│   ├── add_attendance_template.sql
+│   └── add_admin_template.sql
 ├── face_module/
 │   ├── capture_dataset.py
 │   ├── train.py
@@ -52,9 +55,12 @@ Facial_Recognition_Hostel_Attendance_System/
 │   └── mark_attendance.py
 ├── templates/
 │   ├── index.html
+│   ├── login.html
 │   ├── otp.html
 │   ├── success.html
 │   ├── user_not_found.html
+│   ├── attendance.html
+│   ├── register.html
 │   └── dashboard.html
 ├── static/
 │   └── style.css
@@ -102,6 +108,36 @@ Create the database and required tables:
 mysql -u root -p < database/schema.sql
 ```
 
+The project uses four main tables:
+
+```text
+Student
+├── id
+├── name
+├── room_no
+└── phone
+
+attendance
+├── id
+├── student_id
+├── date
+├── arrival_time
+├── departure_time
+└── late_entry
+
+otp_verification
+├── id
+├── student_id
+├── otp
+├── created_at
+└── is_used
+
+admin_users
+├── id
+├── username
+└── password
+```
+
 To add a student, use:
 
 ```sql
@@ -124,6 +160,51 @@ To create an authorized dashboard admin, insert the admin user into MySQL:
 INSERT INTO admin_users (username, password)
 VALUES ('<admin_username>', '<admin_password>');
 ```
+
+Example:
+
+```sql
+INSERT INTO admin_users (username, password)
+VALUES ('admin', 'admin123');
+```
+
+The same format is available in:
+
+```text
+database/add_admin_template.sql
+```
+
+## Admin Authentication
+
+The dashboard is protected with admin authentication.
+
+Routes used for authentication:
+
+```text
+/login      -> Admin login page
+/dashboard  -> Protected dashboard page
+/logout     -> Clears admin session and logs out
+```
+
+If a user opens:
+
+```text
+http://127.0.0.1:5000/dashboard
+```
+
+without logging in, the system automatically redirects them to:
+
+```text
+http://127.0.0.1:5000/login
+```
+
+After successful login, the admin can view:
+
+- Today's attendance
+- Today's late comers
+- Weekly late frequency report
+
+The login credentials are checked from the `admin_users` table.
 
 ## Face Dataset and Model Training
 

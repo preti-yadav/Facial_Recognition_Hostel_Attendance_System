@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Face Attendance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="card">
+    <div class="title">Face Attendance System</div>
+    <div class="subtitle">Mark your attendance using face recognition</div>
+
+    <form action="/mark_attendance" method="post">
+        <button class="btn">Mark Attendance</button>
+    </form>
+</div>
+
+</body>
+</html>

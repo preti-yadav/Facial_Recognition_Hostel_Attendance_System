@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Not Found</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="card">
+    <div class="check error-mark">!</div>
+    <div class="title">User Not Found</div>
+    <div class="subtitle">{{ message }}</div>
+
+    <a href="/" class="btn link-btn">Try Again</a>
+</div>
+
+</body>
+</html>

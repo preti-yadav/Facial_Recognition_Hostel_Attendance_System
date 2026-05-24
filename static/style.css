@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #eaf0f6, #dfe9f3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Card - BIGGER but same style */
+.card {
+    background: white;
+    padding: 70px 60px;
+    border-radius: 25px;
+    width: 45%;
+    max-width: 700px;
+    min-width: 400px;
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+}
+
+/* Title - bigger */
+.title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+/* Subtitle - bigger */
+.subtitle {
+    font-size: 18px;
+    color: #7f8c8d;
+    margin: 20px 0 35px;
+}
+
+/* Button - bigger */
+.btn {
+    background: linear-gradient(to right, #4facfe, #00c6ff);
+    border: none;
+    padding: 18px;
+    border-radius: 35px;
+    color: white;
+    width: 100%;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Check icon */
+.check {
+    font-size: 60px;
+    color: #2ecc71;
+    margin-bottom: 15px;
+}
+
+.error-mark {
+    color: #e74c3c;
+}
+
+.link-btn {
+    display: inline-block;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+/* Input bigger */
+input {
+    padding: 15px;
+    width: 85%;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 18px;
+}

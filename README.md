@@ -72,7 +72,7 @@ Facial_Recognition_Hostel_Attendance_System/
 This major project was developed by a team of three contributors:
 
 - Contributor 1: Riya Singh
-- Contributor 2: Add name here
+- Contributor 2: Ishwa Kochhar
 - Contributor 3: Add name here
 
 ## Requirements
